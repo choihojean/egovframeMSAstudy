@@ -26,6 +26,18 @@ public class ManpowerController {
         Optional<Manpower> manpower = manpowerService.getManpower(id);
         return manpower.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
+    
+    @GetMapping("/name/{koreanName}")
+    public ResponseEntity<Manpower> getManpowerByKoreanName(@PathVariable String koreanName) {
+        Optional<Manpower> manpower = manpowerService.getManpowerByKoreanName(koreanName);
+        return manpower.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+    
+    @GetMapping("/company/{company}")
+    public ResponseEntity<Manpower> getManpowerByCompany(@PathVariable String company) {
+    	Optional<Manpower> manpower = manpowerService.getManpowerByCompany(company);
+    	return manpower.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
 
     @GetMapping
     public List<Manpower> getAllManpower() {

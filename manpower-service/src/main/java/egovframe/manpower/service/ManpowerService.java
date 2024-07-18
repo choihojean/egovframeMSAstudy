@@ -21,6 +21,14 @@ public class ManpowerService {
     public Optional<Manpower> getManpower(Long id) {
         return manpowerRepository.findById(id);
     }
+    
+    public Optional<Manpower> getManpowerByKoreanName(String koreanName) {
+        return manpowerRepository.findByKoreanName(koreanName);
+    }
+    
+    public Optional<Manpower> getManpowerByCompany(String company){
+    	return manpowerRepository.findByCompany(company);
+    }
 
     public List<Manpower> getAllManpower() {
         return manpowerRepository.findAll();
