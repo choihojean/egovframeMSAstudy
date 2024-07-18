@@ -4,6 +4,18 @@ server:
 spring:
   application:
     name: manpower-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/TalentDB
+    username: root
+    password: 
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
 
 eureka:
   client:
