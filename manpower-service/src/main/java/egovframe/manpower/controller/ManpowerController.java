@@ -28,15 +28,15 @@ public class ManpowerController {
     }
     
     @GetMapping("/name/{koreanName}")
-    public ResponseEntity<Manpower> getManpowerByKoreanName(@PathVariable String koreanName) {
-        Optional<Manpower> manpower = manpowerService.getManpowerByKoreanName(koreanName);
-        return manpower.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    public ResponseEntity<List<Manpower>> getManpowerByKoreanName(@PathVariable String koreanName) {
+        List<Manpower> manpowerList = manpowerService.getManpowerByKoreanName(koreanName);
+        return ResponseEntity.ok(manpowerList);
     }
     
     @GetMapping("/company/{company}")
-    public ResponseEntity<Manpower> getManpowerByCompany(@PathVariable String company) {
-    	Optional<Manpower> manpower = manpowerService.getManpowerByCompany(company);
-    	return manpower.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    public ResponseEntity<List<Manpower>> getManpowerByCompany(@PathVariable String company) {
+    	List<Manpower> manpowerList = manpowerService.getManpowerByCompany(company);
+    	return ResponseEntity.ok(manpowerList);
     }
 
     @GetMapping

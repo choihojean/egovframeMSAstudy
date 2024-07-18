@@ -1,6 +1,6 @@
 package egovframe.manpower.repository;
 
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -9,6 +9,6 @@ import egovframe.manpower.entity.Manpower;
 
 @Repository
 public interface ManpowerRepository extends JpaRepository<Manpower, Long> {
-	Optional<Manpower> findByKoreanName(String koreanName);
-	Optional<Manpower> findByCompany(String company);
+	List<Manpower> findByKoreanName(String koreanName);
+	List<Manpower> findByCompany(String company);
 }

@@ -22,11 +22,11 @@ public class ManpowerService {
         return manpowerRepository.findById(id);
     }
     
-    public Optional<Manpower> getManpowerByKoreanName(String koreanName) {
+    public List<Manpower> getManpowerByKoreanName(String koreanName) {
         return manpowerRepository.findByKoreanName(koreanName);
     }
     
-    public Optional<Manpower> getManpowerByCompany(String company){
+    public List<Manpower> getManpowerByCompany(String company){
     	return manpowerRepository.findByCompany(company);
     }
 
