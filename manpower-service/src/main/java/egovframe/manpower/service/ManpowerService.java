@@ -66,4 +66,8 @@ public class ManpowerService {
         Manpower manpower = manpowerRepository.findById(id).orElseThrow(() -> new RuntimeException("Manpower not found"));
         manpowerRepository.delete(manpower);
     }
+    
+    public void deleteManpowerByKoreanName(String koreanName) {
+        manpowerRepository.deleteByKoreanName(koreanName);
+    }
 }

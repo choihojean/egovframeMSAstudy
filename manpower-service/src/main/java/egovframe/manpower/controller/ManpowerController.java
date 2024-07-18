@@ -55,4 +55,10 @@ public class ManpowerController {
         manpowerService.deleteManpower(id);
         return ResponseEntity.noContent().build();
     }
+    
+    @DeleteMapping("/name/{koreanName}")
+    public ResponseEntity<Void> deleteManpowerByKoreanName(@PathVariable String koreanName) {
+    	manpowerService.deleteManpowerByKoreanName(koreanName);
+        return ResponseEntity.noContent().build();
+    }
 }

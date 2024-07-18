@@ -11,4 +11,5 @@ import egovframe.manpower.entity.Manpower;
 public interface ManpowerRepository extends JpaRepository<Manpower, Long> {
 	List<Manpower> findByKoreanName(String koreanName);
 	List<Manpower> findByCompany(String company);
+	void deleteByKoreanName(String koreanName);
 }
