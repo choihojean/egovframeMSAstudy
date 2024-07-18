@@ -38,6 +38,12 @@ public class ManpowerController {
     	List<Manpower> manpowerList = manpowerService.getManpowerByCompany(company);
     	return ResponseEntity.ok(manpowerList);
     }
+    
+    @GetMapping("/name/{koreanName}/company/{company}")
+    public ResponseEntity<List<Manpower>> getManpowerByKoreanNameAndCompany(@PathVariable String koreanName, @PathVariable String company) {
+        List<Manpower> manpowerList = manpowerService.getManpowerByKoreanNameAndCompany(koreanName, company);
+        return ResponseEntity.ok(manpowerList);
+    }
 
     @GetMapping
     public List<Manpower> getAllManpower() {
@@ -58,7 +64,7 @@ public class ManpowerController {
     
     @DeleteMapping("/name/{koreanName}")
     public ResponseEntity<Void> deleteManpowerByKoreanName(@PathVariable String koreanName) {
-    	manpowerService.deleteManpowerByKoreanName(koreanName);
+        manpowerService.deleteManpowerByKoreanName(koreanName);
         return ResponseEntity.noContent().build();
     }
 }

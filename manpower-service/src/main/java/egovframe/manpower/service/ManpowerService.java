@@ -29,6 +29,10 @@ public class ManpowerService {
     public List<Manpower> getManpowerByCompany(String company){
     	return manpowerRepository.findByCompany(company);
     }
+    
+    public List<Manpower>getManpowerByKoreanNameAndCompany(String koreanName,String company) {
+    	return manpowerRepository.findByKoreanNameAndCompany(koreanName, company);
+    }
 
     public List<Manpower> getAllManpower() {
         return manpowerRepository.findAll();
@@ -68,6 +72,7 @@ public class ManpowerService {
     }
     
     public void deleteManpowerByKoreanName(String koreanName) {
-        manpowerRepository.deleteByKoreanName(koreanName);
+        List<Manpower> manpowerList = manpowerRepository.findByKoreanName(koreanName);
+        manpowerRepository.deleteAll(manpowerList);
     }
 }
