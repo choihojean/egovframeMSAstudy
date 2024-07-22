@@ -11,6 +11,7 @@ spring:
           uri: lb://manpower-service
           predicates:
             - Path=/manpower/**
+            
         - id: project-service
           uri: lb://project-service
           predicates:

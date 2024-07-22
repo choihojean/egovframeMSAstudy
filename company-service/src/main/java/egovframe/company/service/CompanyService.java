@@ -57,9 +57,7 @@ public class CompanyService {
         company.setBusinessNumber(companyDetails.getBusinessNumber()); // 사업자번호
         company.setRepresentative(companyDetails.getRepresentative()); // 대표자
         company.setPhoneNumber(companyDetails.getPhoneNumber()); // 전화번호
-        company.setModifier(companyDetails.getModifier()); // 수정자
-        company.setModifiedDate(companyDetails.getModifiedDate()); // 수정일
-        company.setActive(companyDetails.getActive()); // 사용여부
+        company.setActive(companyDetails.isActive()); //사용여부
 
         // 업데이트된 엔티티를 저장합니다.
         return companyRepository.save(company);

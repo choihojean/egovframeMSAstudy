@@ -9,110 +9,88 @@ import javax.persistence.Column;
 @Entity
 public class Company {
 
-	    @Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    private Long companyId;  // 소속사ID
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long companyId;  // 소속사ID
 
-	  
-	    private String companyName;  // 소속사명
+    private String companyName;  // 소속사명
 
-	    private String relation;  // 관계
+    private String relation;  // 관계
 
-	    private String address;  // 주소
+    private String address;  // 주소
 
-	    private String businessNumber;  // 사업자번호
+    private String businessNumber;  // 사업자번호
 
-	    private String representative;  // 대표자
+    private String representative;  // 대표자
 
-	    private String phoneNumber;  // 전화번호
+    private String phoneNumber;  // 전화번호
 
-	    private String modifier;  // 수정자
+    @Column(nullable = false)
+    private boolean active;  // 사용여부
 
-	    private String modifiedDate;  // 수정일
+    // Getters and Setters
 
-	    private String active;  // 사용여부
+    public Long getCompanyId() {
+        return companyId;
+    }
 
-	    // Getters and Setters
+    public void setCompanyId(Long companyId) {
+        this.companyId = companyId;
+    }
 
-	    public Long getCompanyId() {
-	        return companyId;
-	    }
+    public String getCompanyName() {
+        return companyName;
+    }
 
-	    public void setCompanyId(Long companyId) {
-	        this.companyId = companyId;
-	    }
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
 
-	    public String getCompanyName() {
-	        return companyName;
-	    }
+    public String getRelation() {
+        return relation;
+    }
 
-	    public void setCompanyName(String companyName) {
-	        this.companyName = companyName;
-	    }
+    public void setRelation(String relation) {
+        this.relation = relation;
+    }
 
-	    public String getRelation() {
-	        return relation;
-	    }
+    public String getAddress() {
+        return address;
+    }
 
-	    public void setRelation(String relation) {
-	        this.relation = relation;
-	    }
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-	    public String getAddress() {
-	        return address;
-	    }
+    public String getBusinessNumber() {
+        return businessNumber;
+    }
 
-	    public void setAddress(String address) {
-	        this.address = address;
-	    }
+    public void setBusinessNumber(String businessNumber) {
+        this.businessNumber = businessNumber;
+    }
 
-	    public String getBusinessNumber() {
-	        return businessNumber;
-	    }
+    public String getRepresentative() {
+        return representative;
+    }
 
-	    public void setBusinessNumber(String businessNumber) {
-	        this.businessNumber = businessNumber;
-	    }
+    public void setRepresentative(String representative) {
+        this.representative = representative;
+    }
 
-	    public String getRepresentative() {
-	        return representative;
-	    }
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
 
-	    public void setRepresentative(String representative) {
-	        this.representative = representative;
-	    }
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
-	    public String getPhoneNumber() {
-	        return phoneNumber;
-	    }
+    public boolean isActive() {
+        return active;
+    }
 
-	    public void setPhoneNumber(String phoneNumber) {
-	        this.phoneNumber = phoneNumber;
-	    }
-
-	    public String getModifier() {
-	        return modifier;
-	    }
-
-	    public void setModifier(String modifier) {
-	        this.modifier = modifier;
-	    }
-
-	    public String getModifiedDate() {
-	        return modifiedDate;
-	    }
-
-	    public void setModifiedDate(String modifiedDate) {
-	        this.modifiedDate = modifiedDate;
-	    }
-
-	    public String getActive() {
-	        return active;
-	    }
-
-	    public void setActive(String active) {
-	        this.active = active;
-	    }
-	}
-
-
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+}
