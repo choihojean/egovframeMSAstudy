@@ -1,20 +1,30 @@
 package egovframe.project.service;
 
-import egovframe.project.entity.Project;
-import egovframe.project.repository.ProjectRepository;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import egovframe.project.entity.Project;
+import egovframe.project.repository.CommonCodeRepository;
+import egovframe.project.repository.ProjectRepository;
 
 @Service
 public class ProjectService {
 
     @Autowired
     private ProjectRepository projectRepository;
+    
+    @Autowired
+    private CommonCodeRepository commonCodeRepository;
 
     public Project createProject(Project project) {
+    	project.setIndustryCode(commonCodeRepository.findById(project.getIndustryCode().getId()).orElse(null));
+        project.setProjCode(commonCodeRepository.findById(project.getProjCode().getId()).orElse(null));
+        project.setProjState(commonCodeRepository.findById(project.getProjState().getId()).orElse(null));
+        project.setWorkArea(commonCodeRepository.findById(project.getWorkArea().getId()).orElse(null));
+        
         return projectRepository.save(project);
     }
 
@@ -32,14 +42,12 @@ public class ProjectService {
         project.setStartDate(projectDetails.getStartDate());
         project.setEndDate(projectDetails.getEndDate());
         project.setManager(projectDetails.getManager());
-        project.setPhoneNoFront(projectDetails.getPhoneNoFront());
-        project.setPhoneNoMiddle(projectDetails.getPhoneNoMiddle());
-        project.setPhoneNoBack(projectDetails.getPhoneNoBack());
-        project.setIndustryCode(projectDetails.getIndustryCode());
-        project.setProjCode(projectDetails.getProjCode());
-        project.setProjState(projectDetails.getProjState());
+        project.setPhoneNo(projectDetails.getPhoneNo());
+        project.setIndustryCode(commonCodeRepository.findById(projectDetails.getIndustryCode().getId()).orElse(null));
+        project.setProjCode(commonCodeRepository.findById(projectDetails.getProjCode().getId()).orElse(null));
+        project.setProjState(commonCodeRepository.findById(projectDetails.getProjState().getId()).orElse(null));
+        project.setWorkArea(commonCodeRepository.findById(projectDetails.getWorkArea().getId()).orElse(null));
         project.setReqDate(projectDetails.getReqDate());
-        project.setWorkArea(projectDetails.getWorkArea());
         project.setWorkLocation(projectDetails.getWorkLocation());
         project.setEssentialTech(projectDetails.getEssentialTech());
         project.setProjRemark(projectDetails.getProjRemark());

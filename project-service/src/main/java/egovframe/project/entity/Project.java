@@ -1,11 +1,16 @@
 package egovframe.project.entity;
 
+import java.util.UUID;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Column;
-import java.util.UUID;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
 
 @Entity
 public class Project {
@@ -23,14 +28,25 @@ public class Project {
     private String startDate;
     private String endDate;
     private String manager;
-    private String phoneNoFront;
-    private String phoneNoMiddle;
-    private String phoneNoBack;
-    private String industryCode;
-    private String projCode;
-    private String projState;
+    private String phoneNo;
+    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "industry_code_id")
+    private CommonCode industryCode;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "proj_code_id")
+    private CommonCode projCode;
+    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "proj_state_id")
+    private CommonCode projState;
+    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "work_area_id")
+    private CommonCode workArea;
+    
     private String reqDate;
-    private String workArea;
     private String workLocation;
     private String essentialTech;
     private String projRemark;
@@ -95,51 +111,36 @@ public class Project {
         this.manager = manager;
     }
 
-    public String getPhoneNoFront() {
-        return phoneNoFront;
+    public String getPhoneNo() {
+        return phoneNo;
     }
 
-    public void setPhoneNoFront(String phoneNoFront) {
-        this.phoneNoFront = phoneNoFront;
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
     }
 
-    public String getPhoneNoMiddle() {
-        return phoneNoMiddle;
-    }
 
-    public void setPhoneNoMiddle(String phoneNoMiddle) {
-        this.phoneNoMiddle = phoneNoMiddle;
-    }
-
-    public String getPhoneNoBack() {
-        return phoneNoBack;
-    }
-
-    public void setPhoneNoBack(String phoneNoBack) {
-        this.phoneNoBack = phoneNoBack;
-    }
-
-    public String getIndustryCode() {
+    public CommonCode getIndustryCode() {
         return industryCode;
     }
 
-    public void setIndustryCode(String industryCode) {
+    public void setIndustryCode(CommonCode industryCode) {
         this.industryCode = industryCode;
     }
 
-    public String getProjCode() {
+    public CommonCode getProjCode() {
         return projCode;
     }
 
-    public void setProjCode(String projCode) {
+    public void setProjCode(CommonCode projCode) {
         this.projCode = projCode;
     }
 
-    public String getProjState() {
+    public CommonCode getProjState() {
         return projState;
     }
 
-    public void setProjState(String projState) {
+    public void setProjState(CommonCode projState) {
         this.projState = projState;
     }
 
@@ -152,11 +153,11 @@ public class Project {
         generateProjNo();
     }
 
-    public String getWorkArea() {
+    public CommonCode getWorkArea() {
         return workArea;
     }
 
-    public void setWorkArea(String workArea) {
+    public void setWorkArea(CommonCode workArea) {
         this.workArea = workArea;
     }
 
