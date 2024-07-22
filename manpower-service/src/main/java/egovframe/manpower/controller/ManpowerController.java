@@ -67,4 +67,10 @@ public class ManpowerController {
         manpowerService.deleteManpowerByKoreanName(koreanName);
         return ResponseEntity.noContent().build();
     }
+    
+    @DeleteMapping
+    public ResponseEntity<Void> deleteManpowerByIds(@RequestBody List<Long> ids) {
+        manpowerService.deleteManpowerByIds(ids);
+        return ResponseEntity.noContent().build();
+    }
 }

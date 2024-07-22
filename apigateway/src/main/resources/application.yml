@@ -11,8 +11,10 @@ spring:
           uri: lb://manpower-service
           predicates:
             - Path=/manpower/**
-#            - Path=/manpower
-          filters:
+        - id: project-service
+          uri: lb://project-service
+          predicates:
+            - Path=/projects/**
             
 
 eureka:

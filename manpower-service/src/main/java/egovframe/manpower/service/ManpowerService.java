@@ -71,6 +71,10 @@ public class ManpowerService {
         manpowerRepository.delete(manpower);
     }
     
+    public void deleteManpowerByIds(List<Long> ids) {
+        manpowerRepository.deleteAllById(ids);
+    }
+    
     public void deleteManpowerByKoreanName(String koreanName) {
         List<Manpower> manpowerList = manpowerRepository.findByKoreanName(koreanName);
         manpowerRepository.deleteAll(manpowerList);
