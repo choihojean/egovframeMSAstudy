@@ -31,6 +31,10 @@ public class ProjectService {
     public Optional<Project> getProject(Long id) {
         return projectRepository.findById(id);
     }
+    
+    public List<Project> getProjectsByProjName(String projName) {
+        return projectRepository.findByProjName(projName);
+    }
 
     public List<Project> getAllProjects() {
         return projectRepository.findAll();
