@@ -4,6 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import java.time.LocalDate;
+import java.util.UUID;
+
 import javax.persistence.Column;
 
 @Entity
@@ -11,7 +15,9 @@ public class Company {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long companyId;  // 소속사ID
+    private Long id;
+    
+    private String companyId;  // 소속사ID 변경: Long에서 String으로
 
     private String companyName;  // 소속사명
 
@@ -30,11 +36,11 @@ public class Company {
 
     // Getters and Setters
 
-    public Long getCompanyId() {
+    public String getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(Long companyId) {
+    public void setCompanyId(String companyId) {
         this.companyId = companyId;
     }
 
@@ -92,5 +98,10 @@ public class Company {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+    public void generateCompanyId() {
+        String uuidPart = UUID.randomUUID().toString().substring(0, 5);
+        String currentDate = LocalDate.now().toString(); // 현재 날짜를 문자열로 변환
+        this.companyId = companyName + currentDate + "-" + uuidPart;
     }
 }

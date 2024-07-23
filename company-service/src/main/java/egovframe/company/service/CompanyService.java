@@ -16,12 +16,13 @@ public class CompanyService {
 
     // 새로운 회사 레코드 생성
     public Company createCompany(Company company) {
+        company.generateCompanyId(); // companyId 생성
         return companyRepository.save(company);
     }
 
     // ID로 회사 레코드 조회
-    public Optional<Company> getCompany(Long id) {
-        return companyRepository.findById(id);
+    public Optional<Company> getCompany(String id) {
+        return companyRepository.findById(Long.valueOf(id));
     }
 
     // 소속사명으로 회사 레코드 조회
@@ -45,28 +46,25 @@ public class CompanyService {
     }
 
     // 기존 회사 레코드 업데이트
-    public Company updateCompany(Long id, Company companyDetails) {
-        // 회사 ID로 기존의 회사 엔티티를 찾습니다.
-        Company company = companyRepository.findById(id)
+    public Company updateCompany(String id, Company companyDetails) {
+        Company company = companyRepository.findById(Long.valueOf(id))
                 .orElseThrow(() -> new RuntimeException("회사를 찾을 수 없습니다"));
 
-        // companyDetails 객체로부터 값을 가져와서 기존 엔티티의 필드를 업데이트합니다.
-        company.setCompanyName(companyDetails.getCompanyName()); // 소속사명
-        company.setRelation(companyDetails.getRelation()); // 관계
-        company.setAddress(companyDetails.getAddress()); // 주소
-        company.setBusinessNumber(companyDetails.getBusinessNumber()); // 사업자번호
-        company.setRepresentative(companyDetails.getRepresentative()); // 대표자
-        company.setPhoneNumber(companyDetails.getPhoneNumber()); // 전화번호
-        company.setActive(companyDetails.isActive()); //사용여부
+        company.setCompanyName(companyDetails.getCompanyName());
+        company.setRelation(companyDetails.getRelation());
+        company.setAddress(companyDetails.getAddress());
+        company.setBusinessNumber(companyDetails.getBusinessNumber());
+        company.setRepresentative(companyDetails.getRepresentative());
+        company.setPhoneNumber(companyDetails.getPhoneNumber());
+        company.setActive(companyDetails.isActive());
 
-        // 업데이트된 엔티티를 저장합니다.
         return companyRepository.save(company);
     }
 
-
     // 회사 ID로 회사 레코드 삭제
-    public void deleteCompany(Long id) {
-        Company company = companyRepository.findById(id).orElseThrow(() -> new RuntimeException("회사를 찾을 수 없습니다"));
+    public void deleteCompany(String id) {
+        Company company = companyRepository.findById(Long.valueOf(id))
+                .orElseThrow(() -> new RuntimeException("회사를 찾을 수 없습니다"));
         companyRepository.delete(company);
     }
 

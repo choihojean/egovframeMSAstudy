@@ -25,7 +25,7 @@ public class CompanyController {
 
     // 소속사 ID로 소속사 조회
     @GetMapping("/{id}")
-    public ResponseEntity<Company> getCompany(@PathVariable Long id) {
+    public ResponseEntity<Company> getCompany(@PathVariable String id) { // 파라미터 타입 변경
         Optional<Company> company = companyService.getCompany(id);
         return company.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
@@ -62,14 +62,14 @@ public class CompanyController {
 
     // 소속사 ID로 소속사 업데이트
     @PutMapping("/{id}")
-    public ResponseEntity<Company> updateCompany(@PathVariable Long id, @RequestBody Company companyDetails) {
+    public ResponseEntity<Company> updateCompany(@PathVariable String id, @RequestBody Company companyDetails) { // 파라미터 타입 변경
         Company updatedCompany = companyService.updateCompany(id, companyDetails);
         return ResponseEntity.ok(updatedCompany);
     }
 
     // 소속사 ID로 소속사 삭제
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCompany(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteCompany(@PathVariable String id) { // 파라미터 타입 변경
         companyService.deleteCompany(id);
         return ResponseEntity.noContent().build();
     }
