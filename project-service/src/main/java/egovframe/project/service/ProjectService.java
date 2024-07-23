@@ -32,9 +32,6 @@ public class ProjectService {
         return projectRepository.findById(id);
     }
     
-    public List<Project> getProjectsByProjName(String projName) {
-        return projectRepository.findByProjName(projName);
-    }
     
     public List<Project> searchProjects(String projName, String startDate, String endDate) {
         if (projName != null && projName.isEmpty()) {

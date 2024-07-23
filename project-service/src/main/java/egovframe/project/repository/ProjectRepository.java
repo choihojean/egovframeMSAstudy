@@ -9,7 +9,6 @@ import org.springframework.data.repository.query.Param;
 import egovframe.project.entity.Project;
 
 public interface ProjectRepository extends JpaRepository<Project, Long> {
-    List<Project> findByProjName(String projName); 
     
     @Query("SELECT p FROM Project p WHERE "
             + "(:projName IS NULL OR p.projName = :projName) AND "

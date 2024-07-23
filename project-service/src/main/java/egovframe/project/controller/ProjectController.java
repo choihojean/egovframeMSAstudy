@@ -20,18 +20,6 @@ public class ProjectController {
     public Project createProject(@RequestBody Project project) {
         return projectService.createProject(project);
     }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Project> getProjectById(@PathVariable Long id) {
-        Optional<Project> project = projectService.getProjectById(id);
-        return project.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-    }
-    
-    @GetMapping("/name/{projName}")
-    public ResponseEntity<List<Project>> getProjectsByProjName(@PathVariable String projName) {
-        List<Project> projects = projectService.getProjectsByProjName(projName);
-        return ResponseEntity.ok(projects);
-    }
     
     @GetMapping("/search")
     public ResponseEntity<List<Project>> searchProjects(
