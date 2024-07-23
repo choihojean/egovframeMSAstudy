@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -11,10 +12,12 @@ import java.util.UUID;
 import javax.persistence.Column;
 
 @Entity
+@JsonPropertyOrder({ "id", "companyId", "companyName", "relation", "address", "businessNumber", "representative", "phoneNumber", "active" })
 public class Company {
 
-    @Id
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+	
     private Long id;
     
     private String companyId;  // 소속사ID 변경: Long에서 String으로
@@ -35,7 +38,14 @@ public class Company {
     private boolean active;  // 사용여부
 
     // Getters and Setters
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
     public String getCompanyId() {
         return companyId;
     }

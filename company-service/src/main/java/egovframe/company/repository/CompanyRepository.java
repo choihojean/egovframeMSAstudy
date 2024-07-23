@@ -1,7 +1,7 @@
 package egovframe.company.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import egovframe.company.entity.Company;
+import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface CompanyRepository extends JpaRepository<Company, Long> {
@@ -14,5 +14,5 @@ public interface CompanyRepository extends JpaRepository<Company, Long> {
 
     // 소속사명 또는 소속사 ID로 부분 일치 검색
     List<Company> findByCompanyNameContainingOrCompanyIdContaining(String companyName, String companyId);
-
 }
+

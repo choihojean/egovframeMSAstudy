@@ -23,40 +23,19 @@ public class CompanyController {
         return ResponseEntity.ok(createdCompany);
     }
 
-    // 소속사 ID로 소속사 조회
+    // 고유 ID로 소속사 조회
     @GetMapping("/{id}")
     public ResponseEntity<Company> getCompany(@PathVariable String id) { // 파라미터 타입 변경
         Optional<Company> company = companyService.getCompany(id);
         return company.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
-
-    // 소속사명으로 LIKE 검색
-    @GetMapping("/search/companyName")
-    public ResponseEntity<List<Company>> getCompanyByCompanyName(@RequestParam String companyName) {
-        List<Company> companies = companyService.getCompanyByCompanyName(companyName);
-        return ResponseEntity.ok(companies);
-    }
-
-    // 소속사 ID로 LIKE 검색
-    @GetMapping("/search/companyId")
-    public ResponseEntity<List<Company>> getCompanyByCompanyId(@RequestParam String companyId) {
-        List<Company> companies = companyService.getCompanyByCompanyId(companyId);
-        return ResponseEntity.ok(companies);
-    }
-
-    // 소속사명 또는 소속사 ID로 LIKE 검색
+    
+    // 소속사명 또는 소속사 ID로 검색
     @GetMapping("/search")
-    public ResponseEntity<List<Company>> getCompanyByCompanyNameOrCompanyId(
+    public ResponseEntity<List<Company>> searchCompanies(
             @RequestParam(required = false) String companyName,
             @RequestParam(required = false) String companyId) {
-        List<Company> companies = companyService.getCompanyByNameOrId(companyName, companyId);
-        return ResponseEntity.ok(companies);
-    }
-
-    // 모든 소속사 조회
-    @GetMapping
-    public ResponseEntity<List<Company>> getAllCompanies() {
-        List<Company> companies = companyService.getAllCompanies();
+        List<Company> companies = companyService.getCompaniesByNameOrId(companyName, companyId);
         return ResponseEntity.ok(companies);
     }
 
@@ -74,10 +53,13 @@ public class CompanyController {
         return ResponseEntity.noContent().build();
     }
 
-    // 소속사명으로 소속사 삭제
+    // 소속사명으로 소속사 삭제 
+    // 소속사 고유 ID로 삭제할 예정
+    /*
     @DeleteMapping("/search/companyName")
     public ResponseEntity<Void> deleteCompanyByCompanyName(@RequestParam String companyName) {
         companyService.deleteCompanyByCompanyName(companyName);
         return ResponseEntity.noContent().build();
     }
+    */
 }
