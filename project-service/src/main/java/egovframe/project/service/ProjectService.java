@@ -28,12 +28,25 @@ public class ProjectService {
         return projectRepository.save(project);
     }
 
-    public Optional<Project> getProject(Long id) {
+    public Optional<Project> getProjectById(Long id) {
         return projectRepository.findById(id);
     }
     
     public List<Project> getProjectsByProjName(String projName) {
         return projectRepository.findByProjName(projName);
+    }
+    
+    public List<Project> searchProjects(String projName, String startDate, String endDate) {
+        if (projName != null && projName.isEmpty()) {
+            projName = null;
+        }
+        if (startDate != null && startDate.isEmpty()) {
+            startDate = null;
+        }
+        if (endDate != null && endDate.isEmpty()) {
+            endDate = null;
+        }
+        return projectRepository.findByProjNameAndDates(projName, startDate, endDate);
     }
 
     public List<Project> getAllProjects() {
