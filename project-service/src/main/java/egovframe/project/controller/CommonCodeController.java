@@ -9,15 +9,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/common-codes")
 public class CommonCodeController {
 
     @Autowired
     private CommonCodeService commonCodeService;
 
-    @GetMapping("/{codeType}")
-    public ResponseEntity<List<CommonCode>> getCommonCodesByType(@PathVariable String codeType) {
-        List<CommonCode> commonCodes = commonCodeService.getCommonCodesByType(codeType);
-        return ResponseEntity.ok(commonCodes);
+    @GetMapping("/common-codes")
+    public List<CommonCode> getCommonCodesByType(@RequestParam String codeType) {
+        return commonCodeService.getCommonCodesByType(codeType);
     }
 }

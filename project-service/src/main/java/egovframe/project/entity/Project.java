@@ -1,5 +1,7 @@
 package egovframe.project.entity;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.Column;
@@ -51,6 +53,8 @@ public class Project {
     private String projRemark;
     private String projEtc;
 
+    // Getters and Setters
+    
     public Project() {
         // Default constructor
     }
@@ -58,8 +62,6 @@ public class Project {
     private void generateProjNo() {
         this.projNo = this.projName + this.reqDate + "-" + UUID.randomUUID().toString().substring(0, 5);
     }
-
-    // Getters and Setters
 
     public Long getId() {
         return id;
