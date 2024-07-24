@@ -68,8 +68,35 @@ public class ProjectService {
         project.setProjEtc(projectDetails.getProjEtc());
         return projectRepository.save(project);
     }
+    
+    public Project updateProjectDetails(Long id, Project newDetails) {
+        return projectRepository.findById(id)
+                .map(project -> {
+                    project.setSeq(newDetails.getSeq());
+                    project.setTechLevel(newDetails.getTechLevel());
+                    project.setRoleType(newDetails.getRoleType());
+                    project.setTechType(newDetails.getTechType());
+                    project.setRequiredPersonnel(newDetails.getRequiredPersonnel());
+                    project.setRequiredBudget(newDetails.getRequiredBudget());
+                    return projectRepository.save(project);
+                })
+                .orElseThrow(() -> new RuntimeException("Project not found"));
+    }
 
     public void deleteProject(Long id) {
         projectRepository.deleteById(id);
+    }
+    
+    public Project deleteProjectDetails(Long id) {
+    	return projectRepository.findById(id)
+    			.map(project -> {
+    				project.setSeq(null);
+    				project.setTechLevel(null);
+    				project.setRoleType(null);
+    				project.setRequiredBudget(0);
+    				project.setRequiredPersonnel(0);
+    				return projectRepository.save(project);
+    			})
+    			.orElseThrow(() -> new RuntimeException("Project not found"));
     }
 }

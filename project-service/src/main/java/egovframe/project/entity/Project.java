@@ -52,11 +52,18 @@ public class Project {
     private String essentialTech;
     private String projRemark;
     private String projEtc;
+    
+    //필요, 요구조건 변수
+    private Long seq;
+    private String techLevel;
+    private String roleType;
+    private String techType;
+    private int requiredPersonnel;
+    private double requiredBudget;
 
     // Getters and Setters
     
     public Project() {
-        // Default constructor
     }
 
     private void generateProjNo() {
@@ -192,5 +199,55 @@ public class Project {
 
     public void setProjEtc(String projEtc) {
         this.projEtc = projEtc;
+    }
+    
+    //필요, 요구조건 getter,setter
+    
+    public Long getSeq() {
+        return seq;
+    }
+
+    public void setSeq(Long seq) {
+        this.seq = seq;
+    }
+
+    public String getTechLevel() {
+        return techLevel;
+    }
+
+    public void setTechLevel(String techLevel) {
+        this.techLevel = techLevel;
+    }
+
+    public String getRoleType() {
+        return roleType;
+    }
+
+    public void setRoleType(String roleType) {
+        this.roleType = roleType;
+    }
+
+    public String getTechType() {
+        return techType;
+    }
+
+    public void setTechType(String techType) {
+        this.techType = techType;
+    }
+
+    public int getRequiredPersonnel() {
+        return requiredPersonnel;
+    }
+
+    public void setRequiredPersonnel(int requiredPersonnel) {
+        this.requiredPersonnel = requiredPersonnel;
+    }
+
+    public double getRequiredBudget() {
+        return requiredBudget;
+    }
+
+    public void setRequiredBudget(double requiredBudget) {
+        this.requiredBudget = requiredBudget;
     }
 }
