@@ -18,3 +18,7 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
                                             @Param("startDate") String startDate,
                                             @Param("endDate") String endDate);
 }
+
+//@Query를 사용하여 Project entity에서 조건에 맞는 프로젝트 검색
+//List<Project>... 로 조건에 맞는 프로젝트 리스트 반환
+//Param을 통해 쿼리에서 사용되는 파라미터를 메소드 인자로 매핑

@@ -9,7 +9,7 @@ spring:
     username: root
     password: 
     driver-class-name: com.mysql.cj.jdbc.Driver
-    initialization-mode: always
+    initialization-mode: always #앱 실행 시 DB 초기화를 진행하는 역할. data.sql의 작동을 돕는다
   jpa:
     hibernate:
       ddl-auto: update

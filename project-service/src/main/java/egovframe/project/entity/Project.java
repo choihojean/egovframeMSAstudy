@@ -65,9 +65,10 @@ public class Project {
     
     public Project() {
     }
-
+    
+    //프로젝트 번호 생성 메소드
     private void generateProjNo() {
-        this.projNo = this.projName + this.reqDate + "-" + UUID.randomUUID().toString().substring(0, 5);
+    	this.projNo = this.projName + "\n" + this.reqDate + " " + UUID.randomUUID().toString().substring(0, 5);
     }
 
     public Long getId() {
@@ -92,7 +93,7 @@ public class Project {
 
     public void setProjName(String projName) {
         this.projName = projName;
-        generateProjNo();
+        generateProjNo(); //프로젝트 명이 설정될 때마다 projNo를 갱신
     }
 
     public String getStartDate() {
@@ -158,7 +159,7 @@ public class Project {
 
     public void setReqDate(String reqDate) {
         this.reqDate = reqDate;
-        generateProjNo();
+        generateProjNo(); //의뢰일자가 설정될 때마다 projNo를 갱신
     }
 
     public CommonCode getWorkArea() {

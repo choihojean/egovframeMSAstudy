@@ -23,3 +23,5 @@ public class ApigatewayConfig {
         return new CorsWebFilter(source);
     }
 }
+
+//Spring WebFlux를 사용해서 CORS(Cross-Origin Resource Sharing) 설정

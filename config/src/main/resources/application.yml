@@ -1,3 +1,4 @@
+#Spring Cloud Config Server 설정
 server:
   port: 8888
 
@@ -5,9 +6,9 @@ spring:
   application:
     name: config
   profiles:
-    active: native
+    active: native #로컬 파일 시스템. 다양한 시스템이 있으나 Git, SVN사용이 대표적
   cloud:
     config:
       server:
         native:
-          search-locations: file:./config/
+          search-locations: file:./config/ #설정 파일을 찾을 위치 설정
