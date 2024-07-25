@@ -63,6 +63,7 @@ public class ProjectService {
         project.setWorkArea(commonCodeRepository.findById(projectDetails.getWorkArea().getId()).orElse(null));
         project.setReqDate(projectDetails.getReqDate());
         project.setWorkLocation(projectDetails.getWorkLocation());
+        project.setWorkLocationDetail(projectDetails.getWorkLocationDetail());
         project.setEssentialTech(projectDetails.getEssentialTech());
         project.setProjRemark(projectDetails.getProjRemark());
         project.setProjEtc(projectDetails.getProjEtc());

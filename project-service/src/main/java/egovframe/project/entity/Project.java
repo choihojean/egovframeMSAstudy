@@ -49,6 +49,7 @@ public class Project {
     
     private String reqDate;
     private String workLocation;
+    private String workLocationDetail;
     private String essentialTech;
     private String projRemark;
     private String projEtc;
@@ -176,6 +177,14 @@ public class Project {
 
     public void setWorkLocation(String workLocation) {
         this.workLocation = workLocation;
+    }
+    
+    public String getWorkLocationDetail() {
+    	return workLocationDetail;
+    }
+    
+    public void setWorkLocationDetail(String workLocationDetail) {
+    	this.workLocationDetail = workLocationDetail;
     }
 
     public String getEssentialTech() {

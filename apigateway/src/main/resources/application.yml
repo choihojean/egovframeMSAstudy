@@ -22,10 +22,8 @@ spring:
           predicates:
             - Path=/api/companies/** 
             
-
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
-      
 #Gateway 라우팅 설정을 통해서 경로 라우팅을 허용
